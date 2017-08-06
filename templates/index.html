@@ -1,5 +1,44 @@
 <html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	</head>
 	<body>
-	ehehehoe
+		<p>Your Gold:</p>
+		<h3>{{gold}}</h3> 
+		<form action="/process" method="post">
+			<h2>Farm</h2>
+			<p>earns 10-20 golds</p>
+			<input type="hidden" name="building" value="farm1">
+			<input id="farmer" type='submit' value='Find Gold'>
+		</form>
+		<form action="/process" method="post">
+			<h2>Cave</h2>
+			<p>earns 5-10 golds</p>
+			<input type="hidden" name="building" value="cave1">
+			<input id="caveman" type='submit' value='Find Gold'>
+		</form>
+		<form action="/process" method="post">
+			<h2>House</h2>
+			<p>earns 2-5 golds</p>
+			<input type="hidden" name="building" value="house1">
+			<input id="lounge" type='submit' value='Find Gold'>
+		</form>
+		{% if gold>=50 %}
+			<form action="/process" method="post">
+				<h2>Casino</h2>
+				<p>earns/takes 0-50 golds</p>
+				<input type="hidden" name="building" value="casino1">
+				<input id="gambler" type='submit' value='Find Gold'>
+			</form>
+		{%endif%}
+		<p>Activities:</p>
+		<div>
+		</div>
+		<script>
+		$( "#farmer" ).click(function() {	
+			$( "div" ).html( "<strong>Hello</strong>" );
+		});
+		</script>
 	</body>
 </html>
